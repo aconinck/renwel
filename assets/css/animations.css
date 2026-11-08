@@ -108,42 +108,26 @@ body {
 }
 
 /* ----------------------------------------------------------
-   Service cards — hover overlay (no transform conflict with stagger)
+   Service cards — image zoom + text underline only
    ---------------------------------------------------------- */
-.service-card {
-  position: relative;
-}
 
-/* dark gradient overlay on the photo */
-.service-photo::after {
+/* underline on the service name */
+.card-meta strong {
+  position: relative;
+  display: inline-block;
+}
+.card-meta strong::after {
   content: '';
   position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(23, 24, 20, 0.52) 0%, rgba(23,24,20,0.1) 50%, transparent 100%);
-  opacity: 0;
-  transition: opacity 0.35s ease;
-  pointer-events: none;
+  left: 0;
+  right: 100%;
+  bottom: -3px;
+  height: 1px;
+  background: currentColor;
+  transition: right 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.service-card:hover .service-photo::after {
-  opacity: 1;
-}
-
-/* arrow slides diagonally */
-.card-arrow {
-  display: inline-block;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s;
-}
-.service-card:hover .card-arrow {
-  transform: translate(4px, -4px);
-  color: var(--ink);
-}
-
-/* card-meta text slides up slightly */
-.card-meta {
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.service-card:hover .card-meta {
-  transform: translateY(-3px);
+.service-card:hover .card-meta strong::after {
+  right: 0;
 }
 
 /* ----------------------------------------------------------
