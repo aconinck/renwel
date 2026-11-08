@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f8f6f0"><meta name="description" content="Renwel custom projects — describe your vision and we'll make it happen."><title>Projects | Renwel</title><link rel="stylesheet" href="assets/css/style.css"><link rel="stylesheet" href="assets/css/animations.css"><style>
+/* Projects page extras */
+.projects-hero{max-width:var(--max);margin:auto;padding:80px 5% 72px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.projects-hero-copy .kicker{margin-bottom:20px}
+.projects-hero-copy h1{font-family:RenwelSans,Arial,sans-serif;font-weight:400;letter-spacing:-.055em;line-height:1.08;font-size:clamp(48px,5.5vw,80px);margin:0 0 22px}
+.projects-hero-copy p{font-size:16px;line-height:1.7;color:var(--muted);max-width:400px;margin:0 0 32px}
+.projects-hero-visual{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.projects-hero-visual span{display:block;aspect-ratio:1;overflow:hidden;background:var(--sand)}
+.projects-hero-visual span img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+.projects-hero-visual span:hover img{transform:scale(1.04)}
+.projects-hero-visual span:nth-child(1){grid-column:1;grid-row:1}
+.projects-hero-visual span:nth-child(2){grid-column:2;grid-row:1 / span 2;aspect-ratio:auto}
+.projects-hero-visual span:nth-child(3){grid-column:1;grid-row:2}
+.project-types{background:var(--sand);padding:80px 5%}
+.project-types-inner{max-width:var(--max);margin:auto}
+.project-type-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:48px}
+.project-type-card{background:var(--paper);padding:32px 28px;cursor:default;transition:background .2s}
+.project-type-card:hover{background:#fff}
+.project-type-card .pt-number{font-family:RenwelNarrow,sans-serif;font-size:11px;color:var(--muted);letter-spacing:.08em;margin-bottom:20px;display:block}
+.project-type-card h3{font-family:RenwelNarrow,sans-serif;font-size:20px;font-weight:700;letter-spacing:.01em;margin:0 0 10px;line-height:1.2}
+.project-type-card p{font-size:13px;color:var(--muted);line-height:1.65;margin:0}
+.project-brief{max-width:var(--max);margin:auto;padding:100px 5%}
+.project-brief-inner{display:grid;grid-template-columns:1fr 1.4fr;gap:80px;align-items:start}
+.project-brief-left .kicker{margin-bottom:16px}
+.project-brief-left h2{font-family:RenwelSans,Arial,sans-serif;font-weight:400;letter-spacing:-.045em;line-height:1.1;font-size:clamp(32px,3.2vw,50px);margin:0 0 16px}
+.project-brief-left p{font-size:14px;color:var(--muted);line-height:1.75;margin:0 0 12px}
+.brief-form{display:flex;flex-direction:column;gap:22px}
+.brief-form .field{display:flex;flex-direction:column;gap:7px}
+.brief-form label{font-family:RenwelNarrow,sans-serif;font-size:11px;letter-spacing:.08em;font-weight:700;color:var(--muted)}
+.brief-form input,.brief-form textarea,.brief-form select{background:transparent;border:none;border-bottom:1px solid var(--line);padding:10px 0;font-size:14px;color:var(--ink);outline:none;font-family:inherit;transition:border-color .2s;resize:none;-webkit-appearance:none}
+.brief-form input:focus,.brief-form textarea:focus,.brief-form select:focus{border-color:var(--ink)}
+.brief-form textarea{min-height:120px;line-height:1.6}
+.brief-form select{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2364655d' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 4px center}
+.brief-form .row-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.brief-output{margin-top:28px;border-top:1px solid var(--line);padding-top:28px}
+.brief-output[hidden]{display:none}
+.brief-output textarea{width:100%;border:1px solid var(--line);padding:16px;font-size:13px;line-height:1.6;min-height:180px;resize:vertical;background:var(--sand);color:var(--ink);font-family:inherit;outline:none}
+.brief-output .output-actions{display:flex;align-items:center;gap:16px;margin-top:14px}
+.brief-status{font-size:12px;color:var(--muted)}
+@media(max-width:900px){
+  .projects-hero{grid-template-columns:1fr;gap:40px;padding-top:48px}
+  .project-type-grid{grid-template-columns:1fr}
+  .project-brief-inner{grid-template-columns:1fr}
+  .brief-form .row-2{grid-template-columns:1fr}
+}
+</style><script src="assets/js/main.js" defer></script><script src="assets/js/animations.js" defer></script></head><body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="header-shell">
+    <button class="menu-trigger nav-type" type="button" aria-controls="mobile-nav" aria-expanded="false" aria-label="Open menu"><span aria-hidden="true">☰</span></button>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a class="nav-type " href="services.html">SERVICES</a>
+      <a class="nav-type " href="about.html">ABOUT</a>
+      <a class="nav-type " href="how-it-works.html">HOW IT WORKS</a>
+    </nav>
+    <a class="brand" href="index.html" aria-label="Renwel home"><img src="assets/images/renwel-logo.png" width="1649" height="474" alt="Renwel"></a>
+    <div class="header-action"><a class="quote-link nav-type" href="quote.html">GET A QUOTE <span class="quote-count" data-count hidden></span></a></div>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" hidden>
+    <a class="nav-type" href="services.html">SERVICES</a><a class="nav-type" href="about.html">ABOUT</a><a class="nav-type" href="how-it-works.html">HOW IT WORKS</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- Hero -->
+  <div class="projects-hero">
+    <div class="projects-hero-copy" data-anim>
+      <p class="kicker">CUSTOM PROJECTS</p>
+      <h1>Got a big idea?<br>Let's build it.</h1>
+      <p>No project is too specific. Describe your vision and Renwel will put together a plan to make it happen — from one room to your whole home.</p>
+      <a class="button" href="#project-brief">DESCRIBE YOUR PROJECT <span aria-hidden="true">↓</span></a>
+    </div>
+    <div class="projects-hero-visual" data-anim="scale">
+      <span><img src="assets/images/installations.webp" width="887" height="887" alt="" loading="eager"></span>
+      <span><img src="assets/images/hero.webp" width="1774" height="887" alt="" loading="eager" style="height:100%;object-position:center 30%"></span>
+      <span><img src="assets/images/repairs.webp" width="887" height="887" alt="" loading="eager"></span>
+    </div>
+  </div>
+
+  <!-- Project types -->
+  <div class="project-types">
+    <div class="project-types-inner">
+      <div data-anim>
+        <p class="kicker">WHAT KIND OF PROJECT?</p>
+        <h2 style="font-family:RenwelSans,Arial,sans-serif;font-weight:400;letter-spacing:-.045em;font-size:clamp(28px,2.8vw,42px);margin:8px 0 0">Some of the things we take on.</h2>
+      </div>
+      <div class="project-type-grid" data-anim-stagger>
+        <div class="project-type-card">
+          <span class="pt-number">01</span>
+          <h3>Bathroom Renovation</h3>
+          <p>Full gut and rebuild, or a targeted refresh. New tile, fixtures, vanity, lighting and everything in between.</p>
+        </div>
+        <div class="project-type-card">
+          <span class="pt-number">02</span>
+          <h3>Kitchen Remodel</h3>
+          <p>Counter upgrades, cabinet painting, backsplash tile, new hardware, lighting — partial or complete overhaul.</p>
+        </div>
+        <div class="project-type-card">
+          <span class="pt-number">03</span>
+          <h3>Full Home Renovation</h3>
+          <p>Coordinated work across multiple rooms. We handle the sequencing so the project runs smoothly.</p>
+        </div>
+        <div class="project-type-card">
+          <span class="pt-number">04</span>
+          <h3>Basement Finishing</h3>
+          <p>Turn unused space into something livable — home office, guest suite, playroom, gym, bar, or media room.</p>
+        </div>
+        <div class="project-type-card">
+          <span class="pt-number">05</span>
+          <h3>Outdoor Spaces</h3>
+          <p>Deck builds and repairs, patio improvements, fencing, exterior painting and curb appeal upgrades.</p>
+        </div>
+        <div class="project-type-card">
+          <span class="pt-number">06</span>
+          <h3>Something else entirely</h3>
+          <p>Have an idea that doesn't fit a category? Describe it below and we'll figure it out together.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project brief form -->
+  <div class="project-brief" id="project-brief">
+    <div class="project-brief-inner">
+      <div class="project-brief-left" data-anim="slide-left">
+        <p class="kicker">YOUR PROJECT BRIEF</p>
+        <h2>Tell us what you're imagining.</h2>
+        <p>Fill in as much or as little as you have. The more detail you give, the better we can prepare — but even a rough idea is a good place to start.</p>
+        <p>We'll follow up to talk through the scope, timeline and cost before anything is confirmed.</p>
+      </div>
+      <div data-anim="slide-right">
+        <form class="brief-form" id="project-form" novalidate>
+          <div class="field">
+            <label for="proj-name">YOUR NAME</label>
+            <input type="text" id="proj-name" placeholder="First and last name" autocomplete="name">
+          </div>
+          <div class="row-2">
+            <div class="field">
+              <label for="proj-contact">EMAIL OR PHONE</label>
+              <input type="text" id="proj-contact" placeholder="How to reach you" autocomplete="email">
+            </div>
+            <div class="field">
+              <label for="proj-zip">ZIP CODE</label>
+              <input type="text" id="proj-zip" placeholder="e.g. 06880" autocomplete="postal-code" maxlength="10">
+            </div>
+          </div>
+          <div class="field">
+            <label for="proj-type">TYPE OF PROJECT</label>
+            <select id="proj-type">
+              <option value="">Select a category</option>
+              <option>Bathroom renovation</option>
+              <option>Kitchen remodel</option>
+              <option>Full home renovation</option>
+              <option>Basement finishing</option>
+              <option>Outdoor / deck / patio</option>
+              <option>Flooring</option>
+              <option>Painting (interior or exterior)</option>
+              <option>Multiple rooms</option>
+              <option>Something else</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="proj-vision">DESCRIBE YOUR VISION</label>
+            <textarea id="proj-vision" placeholder="Tell us about the space, what you want to change, and what matters most to you. Photos, inspiration boards and any details help."></textarea>
+          </div>
+          <div class="field">
+            <label for="proj-timeline">IDEAL TIMELINE</label>
+            <select id="proj-timeline">
+              <option value="">Flexible / not sure</option>
+              <option>As soon as possible</option>
+              <option>Within 1 month</option>
+              <option>1–3 months</option>
+              <option>3–6 months</option>
+              <option>Planning ahead (6+ months)</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="proj-budget">ROUGH BUDGET (OPTIONAL)</label>
+            <select id="proj-budget">
+              <option value="">Prefer not to say / not sure</option>
+              <option>Under $2,000</option>
+              <option>$2,000 – $5,000</option>
+              <option>$5,000 – $15,000</option>
+              <option>$15,000 – $30,000</option>
+              <option>$30,000+</option>
+            </select>
+          </div>
+          <button class="button" type="submit">PREPARE MY BRIEF <span aria-hidden="true">↗</span></button>
+        </form>
+
+        <div class="brief-output" id="brief-output" hidden>
+          <p class="kicker" style="margin-bottom:12px">YOUR BRIEF IS READY</p>
+          <textarea id="brief-text" readonly aria-label="Your project brief"></textarea>
+          <div class="output-actions">
+            <button class="button" id="copy-brief" type="button">COPY BRIEF</button>
+            <span class="brief-status" id="brief-status" role="status"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<section class="closing"><div data-anim><p class="kicker">NOT A BIG PROJECT?</p><h2>We do that too.</h2><p>Browse standard services for smaller jobs and quick fixes.</p></div><a class="button button-light" href="services.html">EXPLORE SERVICES <span aria-hidden="true">↗</span></a></section>
+<footer class="site-footer"><div class="footer-top"><a class="footer-brand" href="index.html"><img src="assets/images/renwel-logo.png" width="1649" height="474" alt="Renwel"></a><div class="footer-cols"><div><p class="kicker">EXPLORE</p><a href="services.html">Services</a><a href="how-it-works.html">How it works</a><a href="about.html">About</a></div><div><p class="kicker">CONNECT</p><a href="quote.html">Start a request</a><a href="https://www.instagram.com/cwb_services/" target="_blank" rel="noopener noreferrer">Instagram ↗</a></div></div></div><div class="footer-bottom"><span>HOME SERVICES · CONNECTICUT</span><span>© RENWEL</span></div></footer>
+
+<script>
+(function () {
+  var form = document.getElementById('project-form');
+  var output = document.getElementById('brief-output');
+  var briefText = document.getElementById('brief-text');
+  var status = document.getElementById('brief-status');
+  var copyBtn = document.getElementById('copy-brief');
+  if (!form) return;
+  function val(id) { var el = document.getElementById(id); return el ? el.value.trim() || 'Not provided' : 'Not provided'; }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var text = [
+      'Hello! I would like to discuss a custom project with Renwel.',
+      '',
+      'Project type: ' + val('proj-type'),
+      'Vision: ' + val('proj-vision'),
+      'Timeline: ' + val('proj-timeline'),
+      'Budget: ' + val('proj-budget'),
+      '',
+      'Name: ' + val('proj-name'),
+      'Contact: ' + val('proj-contact'),
+      'ZIP: ' + val('proj-zip'),
+    ].join('\n');
+    briefText.value = text;
+    output.hidden = false;
+    status.textContent = 'Review your brief, then copy it to share.';
+    output.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    briefText.focus();
+  });
+  copyBtn.addEventListener('click', async function () {
+    try {
+      await navigator.clipboard.writeText(briefText.value);
+      status.textContent = 'Copied. Your brief is ready to share.';
+    } catch (_) {
+      briefText.focus(); briefText.select();
+      status.textContent = 'Select and copy the text above.';
+    }
+  });
+}());
+</script>
+</body></html>
