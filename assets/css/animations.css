@@ -1,0 +1,268 @@
+/* ============================================================
+   Renwel — Micro-animations
+   All motion respects prefers-reduced-motion
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   Page entrance
+   ---------------------------------------------------------- */
+body {
+  animation: pageFadeIn 0.4s ease forwards;
+}
+@keyframes pageFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ----------------------------------------------------------
+   Scroll-reveal: single element fade-up
+   JS adds .is-visible via IntersectionObserver
+   ---------------------------------------------------------- */
+[data-anim] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity   0.65s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-anim].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Slide variants */
+[data-anim="slide-left"] {
+  transform: translateX(-40px);
+  opacity: 0;
+}
+[data-anim="slide-right"] {
+  transform: translateX(40px);
+  opacity: 0;
+}
+[data-anim="slide-left"].is-visible,
+[data-anim="slide-right"].is-visible {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Scale-in variant */
+[data-anim="scale"] {
+  transform: scale(0.94);
+  opacity: 0;
+}
+[data-anim="scale"].is-visible {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Line-reveal (border tops on steps) */
+[data-anim="line"] {
+  transform: scaleX(0);
+  transform-origin: left center;
+  opacity: 1;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-anim="line"].is-visible {
+  transform: scaleX(1);
+}
+
+/* ----------------------------------------------------------
+   Stagger children fade-up
+   Parent gets data-anim-stagger, JS adds .is-visible to each child
+   ---------------------------------------------------------- */
+[data-anim-stagger] > * {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity   0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-anim-stagger] > *.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Delay overrides are set by JS via setTimeout, but CSS fallback: */
+[data-anim-stagger] > *:nth-child(1) { transition-delay:   0ms; }
+[data-anim-stagger] > *:nth-child(2) { transition-delay:  80ms; }
+[data-anim-stagger] > *:nth-child(3) { transition-delay: 160ms; }
+[data-anim-stagger] > *:nth-child(4) { transition-delay: 240ms; }
+[data-anim-stagger] > *:nth-child(5) { transition-delay: 320ms; }
+[data-anim-stagger] > *:nth-child(6) { transition-delay: 400ms; }
+[data-anim-stagger] > *:nth-child(7) { transition-delay: 480ms; }
+[data-anim-stagger] > *:nth-child(8) { transition-delay: 560ms; }
+
+/* ----------------------------------------------------------
+   Hero text — CSS-only reveal (no JS needed)
+   ---------------------------------------------------------- */
+.hero-copy > * {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.hero-copy > *:nth-child(1) { animation-delay: 0.10s; }
+.hero-copy > *:nth-child(2) { animation-delay: 0.22s; }
+.hero-copy > *:nth-child(3) { animation-delay: 0.34s; }
+.hero-copy > *:nth-child(4) { animation-delay: 0.46s; }
+@keyframes heroReveal {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ----------------------------------------------------------
+   Service cards — hover lift
+   ---------------------------------------------------------- */
+.service-card {
+  transition:
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 32px rgba(23, 24, 20, 0.10);
+}
+
+/* ----------------------------------------------------------
+   Buttons — press + hover
+   ---------------------------------------------------------- */
+.button {
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+.button:active {
+  transform: scale(0.97);
+}
+.closing .button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+/* ----------------------------------------------------------
+   Logo hover
+   ---------------------------------------------------------- */
+.brand,
+.footer-brand {
+  transition: opacity 0.2s ease;
+}
+.brand:hover,
+.footer-brand:hover {
+  opacity: 0.72;
+}
+
+/* ----------------------------------------------------------
+   Desktop nav underline
+   ---------------------------------------------------------- */
+.desktop-nav a::after {
+  transition: right 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ----------------------------------------------------------
+   Quote badge pop
+   ---------------------------------------------------------- */
+.quote-count {
+  animation: badgePop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+@keyframes badgePop {
+  from { transform: scale(0); }
+  to   { transform: scale(1); }
+}
+
+/* ----------------------------------------------------------
+   Underlink hover
+   ---------------------------------------------------------- */
+.underlink {
+  transition: opacity 0.2s ease, border-color 0.2s ease;
+}
+.underlink:hover {
+  opacity: 0.6;
+}
+
+/* ----------------------------------------------------------
+   Header scroll shadow
+   ---------------------------------------------------------- */
+.site-header {
+  transition: box-shadow 0.3s ease;
+}
+.site-header.is-scrolled {
+  box-shadow: 0 1px 0 var(--line, #d8d5cc);
+}
+
+/* ----------------------------------------------------------
+   Editorial parallax helper
+   ---------------------------------------------------------- */
+.editorial-photo img {
+  will-change: transform;
+}
+
+/* ----------------------------------------------------------
+   Steps border reveal setup
+   ---------------------------------------------------------- */
+.steps > div {
+  position: relative;
+}
+
+/* ----------------------------------------------------------
+   Detail list items — subtle hover
+   ---------------------------------------------------------- */
+.detail-item {
+  transition: background 0.2s ease;
+}
+.detail-item:hover {
+  background: var(--sand, #ebe7de);
+}
+
+/* ----------------------------------------------------------
+   Footer links
+   ---------------------------------------------------------- */
+.footer-cols a {
+  transition: opacity 0.18s ease;
+  display: inline-block;
+}
+.footer-cols a:hover {
+  opacity: 0.65;
+  text-decoration: none !important;
+}
+
+/* ----------------------------------------------------------
+   Image zoom on card hover — reinforce existing CSS
+   ---------------------------------------------------------- */
+.service-photo img {
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.service-card:hover .service-photo img {
+  transform: scale(1.04);
+}
+
+/* ----------------------------------------------------------
+   Mobile menu — simple fade when shown by main.js
+   ---------------------------------------------------------- */
+#mobile-nav:not([hidden]) {
+  animation: mobileNavIn 0.25s ease forwards;
+}
+@keyframes mobileNavIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ----------------------------------------------------------
+   prefers-reduced-motion — kill everything
+   ---------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  [data-anim],
+  [data-anim-stagger] > * {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .hero-copy > * {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+  body {
+    animation: none !important;
+  }
+}
